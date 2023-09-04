@@ -1,0 +1,43 @@
+bcryptnodejs: Allows us to create a very secure login. Passwords are never
+		     stored as plain text. They are stored as hashes.
+
+		We never send user passwords and emails over the GET request 
+		as a query string. We send it in the POST request in the body. 
+
+		The passwords are then stored in the database in a hash and 
+		bcrypt allows us to do that.
+
+How to install bcrypt:
+	npm install bcrypt-nodejs.
+
+
+
+FUNCTIONS USED IN BCRYPT:
+
+	The following functions can be used within the signin and register GET/
+	POST request.
+
+	The function given below encrypts your password and returns the hash
+	value so that it is secure...
+	
+	bcrypt.hash("bacon", null, null, function(err, hash) {
+    		// Store hash in your password DB.
+	});
+
+
+
+
+
+
+
+	The 2 functions below are used to compare if the password entered
+	matches the hash value or not.
+
+
+	// Load hash from your password DB.
+	bcrypt.compare("bacon", hash, function(err, res) {
+    		// res == true
+	});
+	bcrypt.compare("veggies", hash, function(err, res) {
+    		// res = false
+	});
